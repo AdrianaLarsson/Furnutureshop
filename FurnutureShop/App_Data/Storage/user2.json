@@ -1,0 +1,8 @@
+{
+  "$type": "FurnutureShop.Models.UserData, FurnutureShop",
+  "Id": 2,
+  "Name": "Adriana",
+  "Email": "adrianalarsson@primat.se",
+  "Password": "adriana",
+  "CartList": []
+}

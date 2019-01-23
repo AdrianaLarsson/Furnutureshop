@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Furnutures";
+}
+@Html.ActionLink("Tillbaka", "Index")
+
+<center>
+   @*images page link to every furnuture, shows information and images on the furnuture*@ 
+
+    <h2>@Model.Name @Model.Type @Model.Color </h2>
+
+    @*gets if the furnuture has delivery or not*@
+    <h2>Exemplar i butik: @Model.InitialCount</h2>
+    <h2>Pris: @Model.Cost kr</h2>
+    @if ((Model.DriveToHome) == false)
+    {
+        <h2>
+            Utkörning: Nej
+        </h2>
+    }
+
+    @if ((Model.DriveToHome) == true)
+    {
+        <h2>
+            Utkörning: Ja
+        </h2>
+    }
+    <img src="~/Pictures/@(Model.Id)_Id.jpg" alt="Avatar" class="avatar">
+
+
+
+
+
+
+
+
+    <p>@Model.AllFurn</p>
+
+
+
+    </center>
+
+

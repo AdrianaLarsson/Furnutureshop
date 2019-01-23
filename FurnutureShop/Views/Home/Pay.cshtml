@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Pay";
+}
+@*form to paying page*@
+
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ 
+  
+
+</head>
+<body>
+
+
+    <header>
+
+        <h2>Betalning</h2>
+    </header>
+
+
+
+    <div class="header">
+
+
+    </div>
+    <section>
+        <form>
+            <nav>
+
+
+
+
+
+            </nav>
+
+
+            <article>
+                <fieldset>
+                    <br>
+
+                    <legend>Boknings detlajer</legend>
+
+
+                    <em>Förnamn</em>:<input name="name" type="text" placeholder=" Ditt förnamn">
+                    <em>Efternamn</em>:<input name="name" type="text" placeholder=" Ditt efternamn">
+
+
+
+
+
+                    <br>
+                </fieldset>
+                <fieldset>
+
+
+
+                    <br>
+
+
+                </fieldset>
+
+
+
+                <em>Korttyp:</em>
+                <select>
+                    <optgroup label="Korttyp" name="Korttyp">
+                        <option>Visa</option>
+                        <option>Mastercard</option>
+                    </optgroup>
+                </select>
+                <br />
+                <br />
+                <em>Namn på ditt kort</em>: <br /><input name="Kortnamn" type="text" placeholder=" Kortnamn">
+                Ditt kortnummer</em>:<input name="kortnummer" type="tel" placeholder="Skriv ditt kortnummer">
+
+                <br>
+
+
+                <br>
+                <em>Önskemål eller andra funderingar?:</em><br>
+                <textarea name="message" placeholder=" Ditt medelande ..." rows="4" cols="50" style="width:85%; padding-right: 40px; "></textarea>
+                <br>
+               @Html.ActionLink("Betala", "Complete", "Home")
+
+                <br>
+                <br>
+            </article>
+
+         
+
+
+</section>
+
+
+</body>
+</html>

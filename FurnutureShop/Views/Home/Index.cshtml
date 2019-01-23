@@ -1,0 +1,211 @@
+﻿@* says hello to the user when its login in*@
+<nav><h2>Hejsan @Model.UserData.Name</h2></nav>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@* shows cart how many items when a ad from the list*@
+<h1>Varukorg</h1>
+
+
+@if (Model.UserData.CartList != null)
+{
+    int nr = 0;
+
+    foreach (var f in Model.UserData.CartList)
+    {
+
+        nr++;
+    }
+    <h1>@nr stycken möbler i din varukorg</h1>
+}
+@*shows the cart, what name and type from the list*@
+
+@if (Model.UserData.CartList != null)
+{
+    foreach (var cart in Model.UserData.CartList)
+    {
+        foreach (var furnuture in Model.FurnutureList)
+
+        {
+            if (cart.Id == furnuture.Id)
+            {
+                <ul>
+
+
+
+                    <text>
+                        @furnuture.Type
+                        @furnuture.Name
+                        <b />
+
+
+                    </text>
+
+
+                </ul>
+
+
+            }
+
+        }
+
+    }
+}
+@*the link to the pay link*@
+<h1>
+    <b />
+    @Html.ActionLink("Betala", "Pay")
+</h1>
+@* tabel, here the furnuturelit is show all de classes, properties*@
+
+<center>
+    <table class="w3-table w3-bordered">
+        <tr>
+
+
+            <th></th>
+
+            <th>Möbler</th>
+            <th>Namn</th>
+            <th>Antal</th>
+            <th>Kort info om produkt</th>
+        </tr>
+        @foreach (var furnuture in Model.FurnutureList)
+        {
+            <tr>
+                @*links when you click on the images, images links to every furnuture in the shop*@
+                <td><a href="~/Home/furnutures/@furnuture.Id"> <img src="~/Pictures/@(furnuture.Id)_Id.jpg" /> </a></td>
+
+                <td>@furnuture.Type</td>
+                <td>@furnuture.Name</td>
+                <td>@furnuture.Count</td>
+                @if (furnuture is FurnutureShop.Models.Sofa)
+                {
+                    <td>
+                        Sittplatser @(((FurnutureShop.Models.Sofa)furnuture).Seats) st<br />
+
+                        @if ((((FurnutureShop.Models.Sofa)furnuture).Sofabed) == true)
+
+                        {
+                            <span>
+                                Bäddsoffa: JA<br />
+                            </span>
+                        }
+                        @*shows if the sofa has sofabed or not*@
+
+                        @if ((((FurnutureShop.Models.Sofa)furnuture).Sofabed) == false)
+
+                        {
+
+                            <span>
+                                Bäddsoffa: Nej<br />
+                            </span>
+                        }
+
+                        @*shows the sofas witdh and heigth*@
+                        Bredd: @(((FurnutureShop.Models.Sofa)furnuture).Width) cm <br />
+                        Höjd: @(((FurnutureShop.Models.Sofa)furnuture).Height)cm <br />
+                    </td>
+
+
+
+
+                }
+
+
+
+
+                @if (furnuture is FurnutureShop.Models.Beds)
+                {
+                    <td>
+                        Storlek; @(((FurnutureShop.Models.Beds)furnuture).BedSize) cm <br />
+                        Madrass; @(((FurnutureShop.Models.Beds)furnuture).Madrass)<br />
+                        @if ((((FurnutureShop.Models.Beds)furnuture).BedFrame) == true)
+                        {
+                            <span>
+                                Sänggavel: JA<br />
+                            </span>
+                        }
+                        @*shows if the bed has bedframe or not*@
+
+
+                        @if ((((FurnutureShop.Models.Beds)furnuture).BedFrame) == false)
+
+                        {
+
+                            <span>
+                                Sänggavel: Nej<br />
+                            </span>
+                        }
+
+                    </td>
+
+
+                }
+
+
+
+
+                @if (furnuture is FurnutureShop.Models.ArmChair)
+                {
+                    <td>
+                        @*shows if armchair has footstool or not*@
+                        @if ((((FurnutureShop.Models.ArmChair)furnuture).Footstool) == true)
+                        {
+                            <span>
+                                Fotpall: JA<br />
+                            </span>
+                        }
+
+
+                        @if ((((FurnutureShop.Models.ArmChair)furnuture).Footstool) == false)
+
+                        {
+
+                            <span>
+                                Fotpall: Nej<br />
+                            </span>
+                        }
+                    </td>
+
+
+
+                }
+                @*add and delet fom the furnuture list to cart. links to buy and return*@
+
+
+                <td>
+                    @if (furnuture.Count > 0)
+                    {
+                        <a href="~/Home/Buy/@furnuture.Id" class="buy">Lägg till varukorg</a>
+                    }
+                </td>
+
+
+
+                <td>
+                    @if (furnuture.Count < furnuture.InitialCount)
+                    {
+                        <a href="~/Home/Return/@furnuture.Id" class="return">Tabort från varukorg</a>
+                    }
+                </td>
+
+
+
+
+            </tr>
+
+        }
+
+
+
+
+    </table>
+</center>
+
+
+
+

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<body>
+    <h2>Logga in</h2>
+
+    @*form to login *@
+
+    <div class="imgcontainer">
+        <img src="~/Pictures/avatar.png"  alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+
+        <form method="post">
+            <div class="container">
+                <label for="uname"><b>Mejladress</b></label>
+                <input type="text" placeholder="Skriv in din mejladress" name="email" /><br />
+                <label for="psw"><b>Lösenord</b></label>
+                <input type="password" placeholder="Skriv ditt lösenord" name="password" required>
+                <button type="submit" value="Logga in" name="Logga in">Logga in</button><br />
+
+
+
+
+
+
+
+
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Kom ihåg mig?
+                </label>
+            </div>
+        
+        </form>
+
+</body>
+</html>
